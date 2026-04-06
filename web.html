@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVOLUTION | Premium Motor Parts</title>
+    <style>
+        /* === GOD-TIER CONFIGURATION === */
+        :root {
+            --primary: #ff4d4d;
+            --bg-dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* Skill Dewa: Mengunci scroll per bagian */
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* === MODERN NAVIGATION === */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 10%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* === SECTION ARCHITECTURE === */
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            scroll-snap-align: start; /* Mengunci scroll */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        /* Animasi Muncul Saat Terlihat */
+        section.active .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background: radial-gradient(circle at center, #222 0%, #000 100%);
+        }
+
+        .hero::before {
+            content: "RACING";
+            position: absolute;
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        /* === PRODUCT GRID (GLASSMORPHISM) === */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .part-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .part-card:hover {
+            background: var(--primary);
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* === CTA BUTTON === */
+        .cta {
+            padding: 15px 40px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .cta:hover {
+            box-shadow: 0 0 30px var(--primary);
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">REV<span>PART</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">01. START</a></li>
+            <li><a href="#engine">02. ENGINE</a></li>
+            <li><a href="#performance">03. PERFORMANCE</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="content">
+            <span style="color: var(--primary); font-weight: bold;">PREMIUM QUALITY</span>
+            <h1>LEVEL UP YOUR GEAR.</h1>
+            <button class="cta">Explore Collection</button>
+        </div>
+    </section>
+
+    <section id="engine">
+        <div class="content">
+            <h2>JANTUNG PACU</h2>
+            <p>Suku cadang mesin yang dirancang untuk durabilitas ekstrem di lintasan balap maupun harian.</p>
+            <div class="grid">
+                <div class="part-card"><h3>Forged Piston</h3></div>
+                <div class="part-card"><h3>Racing Camshaft</h3></div>
+                <div class="part-card"><h3>Titanium Valve</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="performance">
+        <div class="content">
+            <h2>HENTIKAN WAKTU</h2>
+            <p>Sistem pengereman dan suspensi yang memberikan kontrol penuh di tangan Anda.</p>
+            <div class="grid">
+                <div class="part-card"><h3>Brembo Kit</h3></div>
+                <div class="part-card"><h3>Ohlins Rear</h3></div>
+                <div class="part-card"><h3>Carbon Disk</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Skill Dewa JS: Intersection Observer
+        // Berguna untuk mendeteksi kapan section masuk ke layar dan memicu animasi
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            threshold: 0.6
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
